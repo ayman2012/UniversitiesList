@@ -20,9 +20,9 @@ class UniversitiesListRouter: UniversitiesListRouterProtocol {
         return UINavigationController(rootViewController: universitiesListViewController)
     }
     
-    func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with universityDataModel: UniversitiesListResponseDataModel?) {
+    func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with universityDataModel: UniversitiesListResponseDataModel?, refreshDelegate: RefreshDelegateProtocol) {
         guard let model = universityDataModel else { return }
-        let detailsViewController = UniversityDetailsRouter().buildUniversityDetailsModule(universityDataModel: model)
+        let detailsViewController = UniversityDetailsRouter().buildUniversityDetailsModule(universityDataModel: model, refreshDelegate: refreshDelegate)
         guard let viewController = view as? UniversitiesListViewController else { return }
         viewController.navigationController?.pushViewController(detailsViewController, animated: true)
     }

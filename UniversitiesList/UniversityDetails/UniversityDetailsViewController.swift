@@ -39,6 +39,10 @@ class UniversityDetailsViewController: UIViewController {
         universityWebPageTextView.delegate = self
     }
     
+    @IBAction func refreshTapedAction(_ sender: Any) {
+        presenter.refreshData() 
+    }
+    
     private func setUpWebPageLink(link: String) {
         // TODO: - To Localize the string here
         let attributedString = NSMutableAttributedString(string: "Just click here to visit the webPage")
@@ -59,6 +63,10 @@ extension UniversityDetailsViewController: UniversityDetailsViewProtocol {
         universityCountryCodeLabel.text = presenter.getUniversityCountryCode()
         universityStateLabel.text = presenter.getUniversityState()
         setUpWebPageLink(link: presenter.getUniversityWebPage())
+    }
+    
+    func dismissUniversityDetails() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

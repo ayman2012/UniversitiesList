@@ -12,6 +12,7 @@ class UniversityDetailsPresenter: UniversityDetailsPresenterProtocol {
     var interactor: UniversityDetailsInteractorInputProtocol
     var router: UniversityDetailsRouterProtocol
     private var universityDetails: UniversitiesDetailsUIModel?
+    weak var refreshDelegate: RefreshDelegateProtocol?
     
     init(interactor: UniversityDetailsInteractorInputProtocol, router: UniversityDetailsRouterProtocol) {
         self.interactor = interactor
@@ -21,6 +22,11 @@ class UniversityDetailsPresenter: UniversityDetailsPresenterProtocol {
     func viewDidLoad() {
         universityDetails = interactor.getUniversityDetails()
         view?.updateUI()
+    }
+    
+    func refreshData() {
+        router.dismissUniversityDetails(view: view)
+        refreshDelegate?.refreshData()
     }
     
     func getUniversityName() -> String  {
@@ -42,6 +48,4 @@ class UniversityDetailsPresenter: UniversityDetailsPresenterProtocol {
     func getUniversityWebPage() -> String {
         return universityDetails?.webPage ?? "- -"
     }
-    
-   
 }

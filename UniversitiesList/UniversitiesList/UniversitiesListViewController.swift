@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UniversitiesListViewController: UIViewController {
+class UniversitiesListViewController: UIViewController, Loadable, Alertable {
     
     @IBOutlet weak var universitiesTableView: UITableView!
         
@@ -60,16 +60,14 @@ extension UniversitiesListViewController: UniversitiesListViewProtocol {
     }
     
     func onFetchUniversitiesListFailure(error: String) {
-        print(error)
+        showAlert(title: "Error", message: error)
     }
     
     func showLoader() {
-        
+        showLoading(show: true)
     }
     
     func hideLoader() {
-        
+        showLoading(show: false)
     }
-    
-    
 }

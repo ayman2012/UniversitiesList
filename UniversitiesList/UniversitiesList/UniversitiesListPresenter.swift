@@ -41,7 +41,7 @@ class UniversitiesListPresenter: UniversitiesListPresenterProtocol {
     }
     
     func navigateToDetailsViewFor(index: Int) {
-        router.pushToUniversityDetails(on: view, with: universitiesList[safe: index])
+        router.pushToUniversityDetails(on: view, with: universitiesList[safe: index], refreshDelegate: self)
     }
     
     private func mapUniversityDataModelToUIModel(model: UniversitiesListResponseDataModel?) -> UniversityUIModel? {
@@ -62,3 +62,10 @@ extension UniversitiesListPresenter: UniversitiesListInteractorOutputProtocol {
         view?.onFetchUniversitiesListFailure(error: error)
     }
 }
+extension UniversitiesListPresenter: RefreshDelegateProtocol {
+    func refreshData() {
+        view?.showLoader()
+        interactor.fetchData()
+    }
+}
+

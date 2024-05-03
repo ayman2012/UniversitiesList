@@ -50,5 +50,9 @@ protocol UniversitiesListInteractorOutputProtocol: AnyObject {
 // Router protocol
 protocol UniversitiesListRouterProtocol: AnyObject {
     func createModule() -> UINavigationController?
-    func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with universityDataModel: UniversitiesListResponseDataModel?)
+    func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with universityDataModel: UniversitiesListResponseDataModel?, refreshDelegate: RefreshDelegateProtocol)
+}
+
+protocol RefreshDelegateProtocol: AnyObject {
+    func refreshData()
 }

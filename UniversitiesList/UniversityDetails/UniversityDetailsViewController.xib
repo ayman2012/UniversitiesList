@@ -26,14 +26,22 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3BH-Ph-uC4">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWe-iE-DLp">
+                            <rect key="frame" x="337" y="0.0" width="56" height="34.333333333333336"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="arrow.2.squarepath" catalog="system"/>
+                            <connections>
+                                <action selector="refreshTapedAction:" destination="-1" eventType="touchUpInside" id="DAC-Pd-QVh"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCo-Qr-07W">
-                            <rect key="frame" x="12" y="12.000000000000002" width="369" height="21.666666666666671"/>
+                            <rect key="frame" x="12" y="46.333333333333329" width="369" height="21.666666666666671"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="exM-Eo-c1j">
-                            <rect key="frame" x="20" y="45.666666666666671" width="353" height="92.000000000000014"/>
+                            <rect key="frame" x="20" y="80" width="353" height="92"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtS-KE-QDz">
                                     <rect key="frame" x="0.0" y="0.0" width="353" height="18"/>
@@ -42,7 +50,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tq6-OC-8TP">
-                                    <rect key="frame" x="0.0" y="25.999999999999986" width="353" height="18"/>
+                                    <rect key="frame" x="0.0" y="26" width="353" height="18"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Deb-LO-CZW">
                                             <rect key="frame" x="0.0" y="0.0" width="37.333333333333336" height="18"/>
@@ -59,7 +67,7 @@
                                     </subviews>
                                 </stackView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGl-oL-QrL">
-                                    <rect key="frame" x="0.0" y="51.999999999999986" width="353" height="40"/>
+                                    <rect key="frame" x="0.0" y="52" width="353" height="40"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="U3M-4K-2iL"/>
@@ -74,9 +82,11 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="exM-Eo-c1j" firstAttribute="leading" secondItem="3BH-Ph-uC4" secondAttribute="leading" constant="20" id="1Wg-QB-qZ1"/>
-                        <constraint firstItem="sCo-Qr-07W" firstAttribute="top" secondItem="3BH-Ph-uC4" secondAttribute="top" constant="12" id="GH7-8x-2v9"/>
+                        <constraint firstItem="AWe-iE-DLp" firstAttribute="top" secondItem="3BH-Ph-uC4" secondAttribute="top" id="3qI-Zc-W88"/>
+                        <constraint firstAttribute="trailing" secondItem="AWe-iE-DLp" secondAttribute="trailing" id="JkI-we-5xh"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="exM-Eo-c1j" secondAttribute="bottom" constant="12" id="Me9-f0-6F5"/>
                         <constraint firstItem="sCo-Qr-07W" firstAttribute="leading" secondItem="3BH-Ph-uC4" secondAttribute="leading" constant="12" id="bai-qf-hks"/>
+                        <constraint firstItem="sCo-Qr-07W" firstAttribute="top" secondItem="AWe-iE-DLp" secondAttribute="bottom" constant="12" id="cKO-Z5-kYx"/>
                         <constraint firstAttribute="trailing" secondItem="sCo-Qr-07W" secondAttribute="trailing" constant="12" id="k2j-3N-YcM"/>
                         <constraint firstAttribute="trailing" secondItem="exM-Eo-c1j" secondAttribute="trailing" constant="20" id="kv4-JK-5Hl"/>
                         <constraint firstItem="exM-Eo-c1j" firstAttribute="top" secondItem="sCo-Qr-07W" secondAttribute="bottom" constant="12" id="xZo-uV-9mM"/>
@@ -95,6 +105,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow.2.squarepath" catalog="system" width="128" height="88"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

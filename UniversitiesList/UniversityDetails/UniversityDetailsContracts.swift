@@ -11,6 +11,7 @@ import UIKit
 protocol UniversityDetailsViewProtocol: AnyObject {
     var presenter: UniversityDetailsPresenterProtocol { get set }
     func updateUI()
+    func dismissUniversityDetails()
 }
 
 protocol UniversityDetailsPresenterProtocol: AnyObject {
@@ -19,6 +20,7 @@ protocol UniversityDetailsPresenterProtocol: AnyObject {
     var router: UniversityDetailsRouterProtocol {get set}
     
     func viewDidLoad()
+    func refreshData()
     func getUniversityName() -> String
     func getUniversityState() -> String
     func getUniversityCountry() -> String
@@ -31,5 +33,6 @@ protocol UniversityDetailsInteractorInputProtocol: AnyObject {
 }
 
 protocol UniversityDetailsRouterProtocol: AnyObject {
-    func buildUniversityDetailsModule(universityDataModel: UniversitiesListResponseDataModel) -> UIViewController
+    func buildUniversityDetailsModule(universityDataModel: UniversitiesListResponseDataModel, refreshDelegate: RefreshDelegateProtocol) -> UIViewController
+    func dismissUniversityDetails(view: UniversityDetailsViewProtocol?)
 }
