@@ -9,9 +9,10 @@ import UIKit
 
 class UniversitiesListViewController: UIViewController {
     
-     var presenter: UniversitiesListPresenterProtocol
     @IBOutlet weak var universitiesTableView: UITableView!
         
+    var presenter: UniversitiesListPresenterProtocol
+
     init(presenter: UniversitiesListPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -32,11 +33,12 @@ class UniversitiesListViewController: UIViewController {
         universitiesTableView.delegate = self
         universitiesTableView.dataSource = self
     }
-    
 }
 
 extension UniversitiesListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.navigateToDetailsViewFor(index: indexPath.row)
+    }
 }
 
 extension UniversitiesListViewController: UITableViewDataSource {
@@ -52,6 +54,7 @@ extension UniversitiesListViewController: UITableViewDataSource {
 }
 
 extension UniversitiesListViewController: UniversitiesListViewProtocol {
+    
     func onFetchUniversitiesListSuccess() {
         universitiesTableView.reloadData()
     }

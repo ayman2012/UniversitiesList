@@ -31,6 +31,7 @@ protocol UniversitiesListPresenterProtocol: AnyObject {
     func getNumberOfUniversitiesList() -> Int
     func getUniversityModelFor(index: Int) -> UniversityUIModel?
     func getUniversityDetailsFor(index: Int) -> UniversitiesListResponseDataModel?
+    func navigateToDetailsViewFor(index: Int)
 }
 
 // Interactor Input protocol
@@ -48,7 +49,6 @@ protocol UniversitiesListInteractorOutputProtocol: AnyObject {
 
 // Router protocol
 protocol UniversitiesListRouterProtocol: AnyObject {
-    var viewController: UniversitiesListViewController? { get set }
     func createModule() -> UINavigationController?
-    func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with University: String)
+    func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with universityDataModel: UniversitiesListResponseDataModel?)
 }

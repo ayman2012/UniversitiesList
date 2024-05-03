@@ -33,15 +33,19 @@ class UniversitiesListPresenter: UniversitiesListPresenterProtocol {
     }
     
     func getUniversityModelFor(index: Int) -> UniversityUIModel? {
-        guard index < universitiesList.count else { return nil}
-       return mapUniversityDataModelToUIModel(model: universitiesList[index])
+        return mapUniversityDataModelToUIModel(model: universitiesList[safe: index])
     }
     
     func getUniversityDetailsFor(index: Int) -> UniversitiesListResponseDataModel? {
         universitiesList[index]
     }
     
-    private func mapUniversityDataModelToUIModel(model: UniversitiesListResponseDataModel) -> UniversityUIModel? {
+    func navigateToDetailsViewFor(index: Int) {
+        router.pushToUniversityDetails(on: view, with: universitiesList[safe: index])
+    }
+    
+    private func mapUniversityDataModelToUIModel(model: UniversitiesListResponseDataModel?) -> UniversityUIModel? {
+        guard let model = model else { return nil}
         return UniversityUIModel.init(name: model.name, state: model.stateProvince)
     }
 }

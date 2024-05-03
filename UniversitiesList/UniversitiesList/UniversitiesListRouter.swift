@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 class UniversitiesListRouter: UniversitiesListRouterProtocol {
-   weak var viewController: UniversitiesListViewController?
-    
     func createModule() -> UINavigationController? {
         let router = UniversitiesListRouter()
         let repo = NetworkManager()
@@ -18,13 +16,15 @@ class UniversitiesListRouter: UniversitiesListRouterProtocol {
         let presenter = UniversitiesListPresenter(interactor: interactor, router: router)
         let universitiesListViewController = UniversitiesListViewController(presenter: presenter)
         presenter.view = universitiesListViewController
-        router.viewController = universitiesListViewController
         interactor.output = presenter
         return UINavigationController(rootViewController: universitiesListViewController)
     }
     
-    func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with University: String) {
-        
+    func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with universityDataModel: UniversitiesListResponseDataModel?) {
+        guard let model = universityDataModel else { return }
+        let detailsViewController = UniversityDetailsRouter().buildUniversityDetailsModule(universityDataModel: model)
+        guard let viewController = view as? UniversitiesListViewController else { return }
+        viewController.navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
 
