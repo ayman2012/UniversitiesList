@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configMigration() {
            // perform migration if necessary
            let config = Realm.Configuration(
-               schemaVersion: 4,
+               schemaVersion: 1,
                migrationBlock: { migration, oldSchemaVersion in
                    // additional process such as rename, combine fields and link to other object
                })
