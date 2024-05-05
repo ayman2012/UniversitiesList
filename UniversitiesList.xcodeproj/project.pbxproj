@@ -47,6 +47,7 @@
 		75E74A552BE78F0E00789481 /* UniversitiesListMockedJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 75E74A502BE75F3000789481 /* UniversitiesListMockedJson.json */; };
 		75E74A592BE7925500789481 /* UniversitiesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74A582BE7925500789481 /* UniversitiesListPresenterTests.swift */; };
 		75E74A5B2BE79E2B00789481 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E74A5A2BE79E2B00789481 /* UIView+Extension.swift */; };
+		75E74A5F2BE7A7BD00789481 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 75E74A5E2BE7A7BD00789481 /* README.md */; };
 		76B45D7271D388B82564B187 /* Pods_UniversitiesList_UniversitiesListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D8C97EC1EBC1F5FE627F1B /* Pods_UniversitiesList_UniversitiesListUITests.framework */; };
 		889688158E34BEC229446BC0 /* Pods_UniversitiesListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B1F723B9A796E4291286BC /* Pods_UniversitiesListTests.framework */; };
 		C93DC7F2F6C84F13C3A5EACC /* Pods_UniversitiesList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCE60C040EA3F159251B14B /* Pods_UniversitiesList.framework */; };
@@ -119,6 +120,7 @@
 		75E74A532BE7611A00789481 /* MockedCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedCacheManager.swift; sourceTree = "<group>"; };
 		75E74A582BE7925500789481 /* UniversitiesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversitiesListPresenterTests.swift; sourceTree = "<group>"; };
 		75E74A5A2BE79E2B00789481 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		75E74A5E2BE7A7BD00789481 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7650017D4338C2F91B48E243 /* Pods-UniversitiesList-UniversitiesListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversitiesList-UniversitiesListUITests.release.xcconfig"; path = "Target Support Files/Pods-UniversitiesList-UniversitiesListUITests/Pods-UniversitiesList-UniversitiesListUITests.release.xcconfig"; sourceTree = "<group>"; };
 		81B1F723B9A796E4291286BC /* Pods_UniversitiesListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniversitiesListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FCE60C040EA3F159251B14B /* Pods_UniversitiesList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniversitiesList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 		7569BAC22BE2CF5E00705EFC = {
 			isa = PBXGroup;
 			children = (
+				75E74A5E2BE7A7BD00789481 /* README.md */,
 				7569BACD2BE2CF5E00705EFC /* UniversitiesList */,
 				7569BAE42BE2CF6200705EFC /* UniversitiesListTests */,
 				7569BAEE2BE2CF6200705EFC /* UniversitiesListUITests */,
@@ -182,7 +185,7 @@
 				75E74A5C2BE79E4300789481 /* Extensions */,
 				75C77D4D2BE3A0A10062C9BB /* Network */,
 				75E74A5D2BE7A75000789481 /* Modules */,
-				7569BB082BE2F0B500705EFC /* Resources */,
+				7569BB082BE2F0B500705EFC /* SupportingFiles */,
 			);
 			path = UniversitiesList;
 			sourceTree = "<group>";
@@ -209,7 +212,7 @@
 			path = UniversitiesListUITests;
 			sourceTree = "<group>";
 		};
-		7569BB082BE2F0B500705EFC /* Resources */ = {
+		7569BB082BE2F0B500705EFC /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				7569BACE2BE2CF5E00705EFC /* AppDelegate.swift */,
@@ -217,7 +220,7 @@
 				7569BAD92BE2CF6100705EFC /* LaunchScreen.storyboard */,
 				7569BADC2BE2CF6100705EFC /* Info.plist */,
 			);
-			path = Resources;
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		7569BB092BE2F0CF00705EFC /* UniversitiesList */ = {
@@ -427,6 +430,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E74A5F2BE7A7BD00789481 /* README.md in Resources */,
 				7569BADB2BE2CF6100705EFC /* LaunchScreen.storyboard in Resources */,
 				7569BB112BE37C4700705EFC /* UniversitiesListTableViewCell.xib in Resources */,
 				75C77D562BE3CCA00062C9BB /* UniversityDetailsViewController.xib in Resources */,
@@ -690,7 +694,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -747,7 +751,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -766,16 +770,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UniversitiesList/Resources/Info.plist;
+				INFOPLIST_FILE = UniversitiesList/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "UniversitiesList-task.UniversitiesList";
+				PRODUCT_BUNDLE_IDENTIFIER = task.UniversitiesList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -792,16 +797,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UniversitiesList/Resources/Info.plist;
+				INFOPLIST_FILE = UniversitiesList/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "UniversitiesList-task.UniversitiesList";
+				PRODUCT_BUNDLE_IDENTIFIER = task.UniversitiesList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
