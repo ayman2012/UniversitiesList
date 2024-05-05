@@ -5,6 +5,9 @@ target 'UniversitiesList' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Alamofire'
+  pod 'RealmSwift', '~>10'
+  pod 'SwiftLint'
+
   # Pods for UniversitiesList
 
   target 'UniversitiesListTests' do

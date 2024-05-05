@@ -24,10 +24,6 @@ class UniversitiesListPresenter: UniversitiesListPresenterProtocol {
         interactor.fetchData()
     }
     
-    func refresh() {
-        
-    }
-    
     func getNumberOfUniversitiesList() -> Int {
         return universitiesList.count
     }

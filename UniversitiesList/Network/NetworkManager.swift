@@ -19,12 +19,18 @@ class NetworkManager: NetworkManagerProtocol {
 
     // MARK: - Properties
     static var environment: Environment = .develop
-
+    let networkReachability = NetworkReachabilityManager()
+    
     // MARK: - Network call
     func sendRequest<ResponseType: Decodable>(endPoint: RequestBuilder,
                                               decodingType: ResponseType.Type,
                                               completion: @escaping (Result<ResponseType, Error>) -> Void) {
-
+        guard let networkReachability = networkReachability,
+              networkReachability.isReachable  else {
+            completion(.failure(NetworkFailure.generalFailure))
+            return
+        }
+        
         guard let url =  URL.init(string: endPoint.baseURL + endPoint.path) else {
             completion(.failure(NetworkFailure.generalFailure))
             return

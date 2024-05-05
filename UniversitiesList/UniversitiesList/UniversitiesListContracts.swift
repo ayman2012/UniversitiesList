@@ -25,7 +25,6 @@ protocol UniversitiesListPresenterProtocol: AnyObject {
     var view: UniversitiesListViewProtocol? { get set }
     
     func viewDidLoad()
-    func refresh()
     
     
     func getNumberOfUniversitiesList() -> Int

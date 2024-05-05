@@ -12,7 +12,8 @@ class UniversitiesListRouter: UniversitiesListRouterProtocol {
     func createModule() -> UINavigationController? {
         let router = UniversitiesListRouter()
         let repo = NetworkManager()
-        let interactor = UniversitiesListInteractor(repo: repo)
+        let cacheManager = CacheManager()
+        let interactor = UniversitiesListInteractor(repo: repo, cacheManager: cacheManager)
         let presenter = UniversitiesListPresenter(interactor: interactor, router: router)
         let universitiesListViewController = UniversitiesListViewController(presenter: presenter)
         presenter.view = universitiesListViewController

@@ -22,11 +22,9 @@ extension Alertable {
                     handler?()
                 }))
             }
-           if cancelHandler != nil {
-                alertController.addAction(.init(title: "OK", style: .cancel) { _ in
-                    cancelHandler?()
-                    })
-            }
+            alertController.addAction(.init(title: "OK", style: .cancel) { _ in
+                cancelHandler?()
+            })
             self.present(alertController, animated: true)
         }
     }

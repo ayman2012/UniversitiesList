@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UniversitiesListRouter().createModule()
         window?.makeKeyAndVisible()
-        
+        configMigration()
         return true
     }
+    private func configMigration() {
+           // perform migration if necessary
+           let config = Realm.Configuration(
+               schemaVersion: 4,
+               migrationBlock: { migration, oldSchemaVersion in
+                   // additional process such as rename, combine fields and link to other object
+               })
+           Realm.Configuration.defaultConfiguration = config
+       }
 }
 
