@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - UniversityDetailsRouter Class
 class UniversityDetailsRouter: UniversityDetailsRouterProtocol {
     
     func buildUniversityDetailsModule(universityDataModel: UniversitiesListResponseDataModel, refreshDelegate: RefreshDelegateProtocol) -> UIViewController {

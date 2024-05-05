@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// View protocol
+//MARK: - UniversitiesListViewProtocol
 protocol UniversitiesListViewProtocol: AnyObject {
     var presenter: UniversitiesListPresenterProtocol { get set }
     
@@ -18,40 +18,38 @@ protocol UniversitiesListViewProtocol: AnyObject {
     func hideLoader()
 }
 
-// Presenter protocol
+//MARK: - UniversitiesListPresenterProtocol
 protocol UniversitiesListPresenterProtocol: AnyObject {
     var router: UniversitiesListRouterProtocol { get set }
     var interactor: UniversitiesListInteractorInputProtocol { get set }
     var view: UniversitiesListViewProtocol? { get set }
     
     func viewDidLoad()
-    
-    
     func getNumberOfUniversitiesList() -> Int
     func getUniversityModelFor(index: Int) -> UniversityUIModel?
     func getUniversityDetailsFor(index: Int) -> UniversitiesListResponseDataModel?
     func navigateToDetailsViewFor(index: Int)
 }
 
-// Interactor Input protocol
+//MARK: - UniversitiesListInteractorInputProtocol
 protocol UniversitiesListInteractorInputProtocol: AnyObject {
     var output: UniversitiesListInteractorOutputProtocol? { get set }    
     func fetchData()
 }
 
-// Interactor Output protocol
+//MARK: - UniversitiesListInteractorOutputProtocol
 protocol UniversitiesListInteractorOutputProtocol: AnyObject {
     func fetchUniversitiesListSuccess(universitiesList: [UniversitiesListResponseDataModel])
     func fetchUniversitiesListFailure(error: String)
 }
 
-
-// Router protocol
+//MARK: - UniversitiesListRouterProtocol
 protocol UniversitiesListRouterProtocol: AnyObject {
     func createModule() -> UINavigationController?
     func pushToUniversityDetails(on view: UniversitiesListViewProtocol?, with universityDataModel: UniversitiesListResponseDataModel?, refreshDelegate: RefreshDelegateProtocol)
 }
 
+//MARK: - RefreshDelegateProtocol
 protocol RefreshDelegateProtocol: AnyObject {
     func refreshData()
 }

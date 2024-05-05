@@ -7,17 +7,30 @@
 
 import Foundation
 
-class UniversitiesListPresenter: UniversitiesListPresenterProtocol {    
+// MARK: - UniversitiesListPresenter Class
+class UniversitiesListPresenter {
+    
+    // MARK: - Properties
     weak var view: UniversitiesListViewProtocol?
     var interactor: UniversitiesListInteractorInputProtocol
     var router: UniversitiesListRouterProtocol
+    private var universitiesList = [UniversitiesListResponseDataModel]()
     
+    // MARK: - Initialization
     init(interactor: UniversitiesListInteractorInputProtocol, router: UniversitiesListRouterProtocol) {
         self.interactor = interactor
         self.router = router
     }
     
-    private var universitiesList = [UniversitiesListResponseDataModel]()
+    // MARK: - Utilities Methods
+    private func mapUniversityDataModelToUIModel(model: UniversitiesListResponseDataModel?) -> UniversityUIModel? {
+        guard let model = model else { return nil}
+        return UniversityUIModel.init(name: model.name, state: model.stateProvince)
+    }
+}
+
+// MARK: - UniversitiesListPresenterProtocol Extension
+extension UniversitiesListPresenter: UniversitiesListPresenterProtocol {
     
     func viewDidLoad() {
         view?.showLoader()
@@ -39,13 +52,9 @@ class UniversitiesListPresenter: UniversitiesListPresenterProtocol {
     func navigateToDetailsViewFor(index: Int) {
         router.pushToUniversityDetails(on: view, with: universitiesList[safe: index], refreshDelegate: self)
     }
-    
-    private func mapUniversityDataModelToUIModel(model: UniversitiesListResponseDataModel?) -> UniversityUIModel? {
-        guard let model = model else { return nil}
-        return UniversityUIModel.init(name: model.name, state: model.stateProvince)
-    }
 }
 
+// MARK: - UniversitiesListInteractorOutputProtocol Extension
 extension UniversitiesListPresenter: UniversitiesListInteractorOutputProtocol {
     func fetchUniversitiesListSuccess(universitiesList: [UniversitiesListResponseDataModel]) {
         self.universitiesList = universitiesList
@@ -58,6 +67,8 @@ extension UniversitiesListPresenter: UniversitiesListInteractorOutputProtocol {
         view?.onFetchUniversitiesListFailure(error: error)
     }
 }
+
+// MARK: - RefreshDelegateProtocol Extension
 extension UniversitiesListPresenter: RefreshDelegateProtocol {
     func refreshData() {
         view?.showLoader()

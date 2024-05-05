@@ -6,18 +6,26 @@
 //
 
 import Foundation
-class UniversityDetailsPresenter: UniversityDetailsPresenterProtocol {
+
+// MARK: - UniversityDetailsPresenter Class
+class UniversityDetailsPresenter {
     
-    weak var view: UniversityDetailsViewProtocol?
+    // MARK: - Properties 
     var interactor: UniversityDetailsInteractorInputProtocol
     var router: UniversityDetailsRouterProtocol
-    private var universityDetails: UniversitiesDetailsUIModel?
+    weak var view: UniversityDetailsViewProtocol?
     weak var refreshDelegate: RefreshDelegateProtocol?
+    private var universityDetails: UniversitiesDetailsUIModel?
     
+    // MARK: - Initialization
     init(interactor: UniversityDetailsInteractorInputProtocol, router: UniversityDetailsRouterProtocol) {
         self.interactor = interactor
         self.router = router
     }
+}
+
+// MARK: - UniversityDetailsPresenterProtocol Extension
+extension UniversityDetailsPresenter: UniversityDetailsPresenterProtocol {
     
     func viewDidLoad() {
         universityDetails = interactor.getUniversityDetails()

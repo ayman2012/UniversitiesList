@@ -7,12 +7,16 @@
 
 import UIKit
 
+// MARK: - UniversitiesListViewController Class
 class UniversitiesListViewController: UIViewController, Loadable, Alertable {
     
+    // MARK: - Outlets
     @IBOutlet weak var universitiesTableView: UITableView!
         
+    // MARK: - Proprieties
     var presenter: UniversitiesListPresenterProtocol
-
+    
+    // MARK: - Initialization
     init(presenter: UniversitiesListPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -22,12 +26,15 @@ class UniversitiesListViewController: UIViewController, Loadable, Alertable {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Universities List"
         setupTableView()
         presenter.viewDidLoad()
     }
     
+    // MARK: - Utilities Methods
     private func setupTableView() {
         universitiesTableView.register(UniversitiesListTableViewCell.nib, forCellReuseIdentifier: UniversitiesListTableViewCell.identifier)
         universitiesTableView.delegate = self
@@ -35,12 +42,14 @@ class UniversitiesListViewController: UIViewController, Loadable, Alertable {
     }
 }
 
+// MARK: - UITableViewDelegate Extension
 extension UniversitiesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.navigateToDetailsViewFor(index: indexPath.row)
     }
 }
 
+// MARK: - UITableViewDataSource Extension
 extension UniversitiesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.getNumberOfUniversitiesList() 
@@ -53,6 +62,7 @@ extension UniversitiesListViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UniversitiesListViewProtocol Extension
 extension UniversitiesListViewController: UniversitiesListViewProtocol {
     
     func onFetchUniversitiesListSuccess() {

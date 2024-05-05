@@ -7,17 +7,20 @@
 
 import UIKit
 
+// MARK: - UniversityDetailsViewController Class
 class UniversityDetailsViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var universityNameLabel: UILabel!
     @IBOutlet weak var universityCountryLabel: UILabel!
     @IBOutlet weak var universityCountryCodeLabel: UILabel!
     @IBOutlet weak var universityStateLabel: UILabel!
     @IBOutlet weak var universityWebPageTextView: UITextView!
-    @IBOutlet weak var universityRefreshButton: UIButton!
     
+    // MARK: - Proprieties
     var presenter: UniversityDetailsPresenterProtocol
     
+    // MARK: - Initialization
     init(presenter: UniversityDetailsPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -27,12 +30,15 @@ class UniversityDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "University Details"
         presenter.viewDidLoad()
         setupTextView()
     }
     
+    // MARK: - Utilities Methods
     private func setupTextView() {
         universityWebPageTextView.isEditable = false
         universityWebPageTextView.isUserInteractionEnabled = true
@@ -44,10 +50,9 @@ class UniversityDetailsViewController: UIViewController {
     }
     
     private func setUpWebPageLink(link: String) {
-        // TODO: - To Localize the string here
-        let attributedString = NSMutableAttributedString(string: "Just click here to visit the webPage")
+        let attributedString = NSMutableAttributedString(string: link)
         guard let url = URL(string: link) else { return }
-        attributedString.setAttributes([.link: url], range: NSMakeRange(5, 10))
+        attributedString.setAttributes([.link: url], range: NSMakeRange(0, link.count))
         universityWebPageTextView.attributedText = attributedString
         universityWebPageTextView.linkTextAttributes = [
             .foregroundColor: UIColor.blue,
@@ -56,6 +61,7 @@ class UniversityDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - UniversityDetailsViewProtocol Extension
 extension UniversityDetailsViewController: UniversityDetailsViewProtocol {
     func updateUI() {
         universityNameLabel.text = presenter.getUniversityName()
@@ -70,9 +76,14 @@ extension UniversityDetailsViewController: UniversityDetailsViewProtocol {
     }
 }
 
+// MARK: - UITextViewDelegate Extension
 extension UniversityDetailsViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        UIApplication.shared.openURL(URL)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(URL, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(URL)
+        }
         return false
     }
 }

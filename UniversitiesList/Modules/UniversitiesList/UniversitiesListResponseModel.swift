@@ -8,7 +8,7 @@
 import Foundation
 typealias UniversitiesListResponseModel = [UniversitiesListResponseDataModel]
 
-// MARK: - UniversitiesListResponseModelElement
+// MARK: - UniversitiesListResponseDataModel
 struct UniversitiesListResponseDataModel: Codable {
     let domains: [String]
     let stateProvince: String?
